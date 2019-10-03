@@ -22,10 +22,9 @@ class CollectableStore {
   };
   
 decorate(WatchStore, {
-    watches: observable,
+    collectables: observable,
     loading: observable,
     query: observable,
-    filteredWatches: computed
 });
 }
 
