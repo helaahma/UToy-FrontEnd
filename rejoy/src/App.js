@@ -3,7 +3,8 @@ import { observer } from "mobx-react";
 import logo from "./logo.svg";
 import "./App.css";
 //components
-import collectableList from "./components/collectible/index";
+import collectableList from "./components/Collectable/index";
+import collectableDetail from "./components/collectable/collectableDetail";
 import notFound from "./components/notFound/notFound";
 import Loading from "./components/Loading";
 //Router
@@ -31,16 +32,16 @@ function App() {
       );
     }
   };
-  return (
-    <div id="app" className="container-fluid">
-      <div className="row">
-        <div className="col-2">
-          <Sidebar />
-        </div>
-        <div className="content col-10">{getView()}</div>
-      </div>
-    </div>
-  );
+  // return (
+  //   <div id="app" className="container-fluid">
+  //     <div className="row">
+  //       <div className="col-2">
+  //         <Sidebar />
+  //       </div>
+  //       <div className="content col-10">{getView()}</div>
+  //     </div>
+  //   </div>
+  // );
 }
 
 export default withRouter(observer(App));
