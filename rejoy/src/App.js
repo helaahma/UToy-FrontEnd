@@ -3,7 +3,7 @@ import { observer } from "mobx-react";
 import logo from "./logo.svg";
 import "./App.css";
 //components
-import collectableList from "./components/Collectable/index";
+import collectableList from "./components/collectable/index";
 import collectableDetail from "./components/collectable/collectableDetail";
 import notFound from "./components/notFound/notFound";
 import Loading from "./components/Loading";
