@@ -37,5 +37,5 @@ decorate(CollectableStore, {
 });
 
 const collectableStore = new CollectableStore();
-collectableStore.fetchAllPost();
+collectableStore.fetchCollectables();
 export default collectableStore;

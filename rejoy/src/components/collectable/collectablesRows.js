@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { observer } from "../node_modules/mobx-react";
+import { observer } from "mobx-react";
 
 const CollectablesRow = props => {
   const collectables = props.collectable;
@@ -19,7 +19,7 @@ const CollectablesRow = props => {
       <td>{collectables.owner}</td>
       <td>
         <Link to={`/collectable/list/${collectables.condition}`}>
-          <button className="btn" style={{ backgroundColor: blue }} />
+          <button className="btn" style={{ backgroundColor: "#FFE4C4" }} />
         </Link>
       </td>
     </tr>

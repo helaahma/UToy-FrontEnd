@@ -4,10 +4,10 @@ import { observer } from "mobx-react";
 
 //stores
 import collectableStore from "../../stores/collectableStore";
-import authStore from "../../stores/authSore";
 //components
 import CollectiblleTable from "./collectablleTable";
 import Loading from "../Loading";
+import SearchBar from "../SearchBar";
 
 class CollectableList extends Component {
   handleSearch = query => {
@@ -19,9 +19,9 @@ class CollectableList extends Component {
     let collectables;
     let allCollectablesButton;
     if (!collectableCond) {
-      books = bookStore.filteredBooks;
+      collectables = collectableStore.fetchCollectables;
     } else {
-      books = collectableStore.getCollectableByCond(collectableCond);
+      collectables = collectableStore.getCollectableByCond(collectableCond);
       allCollectablesButton = (
         <Link to="/collectable/list/">
           <button className="btn">Collectables List</button>
@@ -29,18 +29,16 @@ class CollectableList extends Component {
       );
     }
     if (collectableStore.loading) {
-      return (
-        <Container style={styles.container}>
-          <Loading />
-        </Container>
-      );
+      return <Loading />;
     } else {
-      <div className="books">
-        <h3>collectables</h3>
-        <SearchBar store={collectableStore} />
-        {allCollectablesButton}
-        <CollectiblleTable collectables={collectables} />
-      </div>;
+      return (
+        <div className="books">
+          <h3>collectables</h3>
+          <SearchBar store={collectableStore} />
+          {allCollectablesButton}
+          <CollectiblleTable collectables={collectables} />
+        </div>
+      );
     }
     // let card = collectableStore.filteredcollectables.map(collectable => {
     //   return <Card key={collectable.id} collectable={collectable} />;
