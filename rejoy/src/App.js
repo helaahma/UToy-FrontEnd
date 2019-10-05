@@ -20,9 +20,9 @@ function App() {
     } else {
       return (
         <Switch className="App">
-          <Redirect exact from="/" to="/list" />
+          <Redirect exact from="/" to="/api/collectable/list/" />
           <Route
-            path="/collectable/list/:collectableCond?"
+            path="/api/collectable/list/:collectableCond?/"
             component={collectableList}
           />
           <Route path="/collectable/detail/:id" component={collectableDetail} />
