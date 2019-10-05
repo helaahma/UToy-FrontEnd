@@ -5,8 +5,8 @@ import AuthStore from "../stores/AuthStore";
 class Signup extends Component {
   state = {
     username: "",
-    email: "",
     password: "",
+    email: "",
     first_name: "",
     last_name: ""
   };
@@ -14,6 +14,7 @@ class Signup extends Component {
   handleChange = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
+  //   understand event.target.name, How does the name work??
 
   handleSubmit = event => {
     event.preventDefault();
@@ -21,7 +22,7 @@ class Signup extends Component {
   };
 
   render() {
-    const { username, email, password, first_name, last_name } = this.state;
+    const { username, password, email, first_name, last_name } = this.state;
 
     return (
       <div className="col-6 mx-auto">
@@ -30,6 +31,7 @@ class Signup extends Component {
             <form onSubmit={this.handleSubmit}>
               <div className="form-group">
                 <label htmlFor="username">Username</label>
+
                 <input
                   type="text"
                   className="form-control"
@@ -40,18 +42,7 @@ class Signup extends Component {
                   onChange={this.handleChange}
                 />
               </div>
-              <div className="form-group">
-                <label htmlFor="email">Email</label>
-                <input
-                  type="email"
-                  className="form-control"
-                  id="email"
-                  value={email}
-                  name="email"
-                  placeholder="Email"
-                  onChange={this.handleChange}
-                />
-              </div>
+
               <div className="form-group">
                 <label htmlFor="password">Password</label>
                 <input
@@ -64,6 +55,20 @@ class Signup extends Component {
                   onChange={this.handleChange}
                 />
               </div>
+
+              <div className="form-group">
+                <label htmlFor="email">Email</label>
+                <input
+                  type="email"
+                  className="form-control"
+                  id="email"
+                  value={email}
+                  name="email"
+                  placeholder="Email"
+                  onChange={this.handleChange}
+                />
+              </div>
+
               <div className="form-group">
                 <label htmlFor="first_name">First Name</label>
                 <input
@@ -76,6 +81,7 @@ class Signup extends Component {
                   onChange={this.handleChange}
                 />
               </div>
+
               <div className="form-group">
                 <label htmlFor="last_name">Last Name</label>
                 <input
