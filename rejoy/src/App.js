@@ -1,26 +1,46 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { observer } from "mobx-react";
+import logo from "./logo.svg";
+import "./App.css";
+//components
+import collectableList from "./components/collectible/index";
+import notFound from "./components/notFound/notFound";
+import Loading from "./components/Loading";
+//Router
+import { Route, Switch, Redirect, withRouter } from "react-router-dom";
+
+//Stores
+import collectableStore from "./stores/collectableStore";
 
 function App() {
+  const getView = () => {
+    if (collectableStore.loading) {
+      return <Loading />;
+    } else {
+      return (
+        <Switch className="App">
+          <Redirect exact from="/" to="/list" />
+          <Route
+            path="/collectable/list/:collectableCond?"
+            component={collectableList}
+          />
+          <Route path="/collectable/detail/:id" component={collectableDetail} />
+
+          <Route component={notFound} />
+        </Switch>
+      );
+    }
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div id="app" className="container-fluid">
+      <div className="row">
+        <div className="col-2">
+          <Sidebar />
+        </div>
+        <div className="content col-10">{getView()}</div>
+      </div>
     </div>
   );
 }
 
-export default App;
+export default withRouter(observer(App));
