@@ -1,7 +1,7 @@
 import React from "react";
 
 //components
-import CollectablesRow from "./collectablesRows";
+import CollectablesRow from "./CollectablesRows";
 
 const collectableTable = props => {
   const collectableRows = props.collectables.map(collectable => (
