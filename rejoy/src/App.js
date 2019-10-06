@@ -20,28 +20,25 @@ function App() {
     } else {
       return (
         <Switch className="App">
-          <Redirect exact from="/" to="/api/collectable/list/" />
-          <Route
-            path="/api/collectable/list/:collectableCond?/"
-            component={collectableList}
-          />
-          <Route path="/collectable/detail/:id" component={collectableDetail} />
+          <Redirect exact from="/" to="/list" />
+          <Route path="/list/:collectableCond?/" component={collectableList} />
+          <Route path="/detail/:id" component={collectableDetail} />
 
           <Route component={notFound} />
         </Switch>
       );
     }
   };
-  // return (
-  //   <div id="app" className="container-fluid">
-  //     <div className="row">
-  //       <div className="col-2">
-  //         <Sidebar />
-  //       </div>
-  //       <div className="content col-10">{getView()}</div>
-  //     </div>
-  //   </div>
-  // );
+  return (
+    <div id="app" className="container-fluid">
+      <div className="row">
+        {/* <div className="col-2">
+          <Sidebar />
+        </div> */}
+        <div className="content col-10">{getView()}</div>
+      </div>
+    </div>
+  );
 }
 
 export default withRouter(observer(App));

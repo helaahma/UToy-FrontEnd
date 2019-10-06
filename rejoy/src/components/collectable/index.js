@@ -19,7 +19,7 @@ class CollectableList extends Component {
     let collectables;
     let allCollectablesButton;
     if (!collectableCond) {
-      collectables = collectableStore.fetchCollectables;
+      collectables = collectableStore.collectables;
     } else {
       collectables = collectableStore.getCollectableByCond(collectableCond);
       allCollectablesButton = (

@@ -9,7 +9,8 @@ class CollectableStore {
   fetchCollectables = async () => {
     try {
       const res = await instance.get("collectable/list/");
-      this.collectables = res.data;
+      const collectables = res.data;
+      this.collectables = collectables;
       this.loading = false;
     } catch (error) {
       console.log(error);
