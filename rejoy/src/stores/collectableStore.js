@@ -10,6 +10,7 @@ class CollectableStore {
     try {
       const res = await instance.get("collectable/list/");
       const collectables = res.data;
+      console.log("[collectablesStore.js], collectables: ", collectables);
       this.collectables = collectables;
       this.loading = false;
     } catch (error) {
@@ -27,7 +28,7 @@ class CollectableStore {
     return this.collectables.find(collectable => +collectable.id === +id);
   };
   getCollectableByCond = cond => {
-    return this.filteredBooks.filter(book => book.condition === cond);
+    return this.filteredCollectables.filter(coll => coll.condition === cond);
   };
 
   // handleChange = event => {
