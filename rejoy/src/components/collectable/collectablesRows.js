@@ -4,6 +4,7 @@ import { observer } from "mobx-react";
 
 const CollectablesRow = props => {
   const collectables = props.collectable;
+  console.log("[CollectablesRows.js], collectables: ", collectables.item);
 
   // const availableButton = (
   //   <button
@@ -19,7 +20,11 @@ const CollectablesRow = props => {
       <td>{collectables.owner}</td>
       <td>
         <Link to={`/collectable/list/${collectables.condition}`}>
-          <button className="btn" style={{ backgroundColor: "#FFE4C4" }} />
+          <button className="btn" style={{ backgroundColor: "#FFE4C4" }}>
+            {" "}
+            {collectables.condition}
+          </button>
+          />
         </Link>
       </td>
     </tr>
