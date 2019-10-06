@@ -2,7 +2,7 @@ import React from "react";
 import { observer } from "mobx-react";
 
 //components
-import CollectableTable from "./collectablleTable";
+import CollectableTable from "./CollectablleTable";
 //Add Collectable
 //stores
 import collectableStore from "../../stores/collectableStore";
