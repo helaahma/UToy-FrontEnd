@@ -28,7 +28,21 @@ class CollectableStore {
   getCollectableByCond = cond => {
     return this.filteredBooks.filter(book => book.condition === cond);
   };
+
+  // handleChange = event => {
+  // //   this.setState({ [event.target.name]: event.target.value });
+  // };
+
+  portForm = async form => {
+    try {
+      const res = await instance.post("SellRequest/", form);
+      this.collectables.push(res.data);
+    } catch (err) {
+      this.statusMessage = err;
+    }
+  };
 }
+
 decorate(CollectableStore, {
   collectables: observable,
   loading: observable,
