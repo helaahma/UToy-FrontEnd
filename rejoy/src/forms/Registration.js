@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import AuthStore from "../stores/AuthStore";
+import authStore from "../stores/authStore";
 
-class Signup extends Component {
+class Registration extends Component {
   state = {
     username: "",
     password: "",
@@ -18,7 +18,7 @@ class Signup extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    AuthStore.signupUser(this.state);
+    authStore.signupUser(this.state);
   };
 
   render() {
@@ -109,4 +109,4 @@ class Signup extends Component {
   }
 }
 
-export default Signup;
+export default Registration;

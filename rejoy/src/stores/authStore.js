@@ -9,38 +9,64 @@ export const instance = axios.create({
 class AuthStore {
   user = null;
 
+  // setUser = token => {
+  //   axios.defaults.headers.common.Authorization = `JWT ${token}`;
+  //   const decodedUser = jwt_decode(token);
+  //   this.user = decodedUser;
+  // };
+
   setUser = token => {
     if (token) {
-      axios.defaults.headers.common.Authorization = `JWT ${token}`;
       const decodedUser = jwt_decode(token);
       this.user = decodedUser;
+      axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+      localStorage.setItem("token", token);
+      console.log("user", this.user);
     } else {
       delete axios.defaults.headers.common.Authorization;
       this.user = null;
+      localStorage.removeItem("token");
     }
   };
 
   signupUser = async userData => {
     try {
       await instance.post("register/", userData);
+      console.log("reg");
       this.login(userData);
     } catch (err) {
       console.error(err.response.data);
     }
   };
 
-  loginUser = async userData => {
+  login = async (userData, history) => {
     try {
       const res = await instance.post("login/", userData);
-      const user = res.data;
-      this.setUser(user.token);
+      const data = res.data;
+      this.setUser(data.access);
+      history.replace("/");
     } catch (err) {
-      console.error(err.response.data);
+      console.error(err);
     }
   };
 
   logout = () => {
     this.setUser();
+  };
+
+  checkForToken = () => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      const currentTime = Date.now() / 1000;
+      const user = jwt_decode(token);
+      if (user.exp >= currentTime) {
+        this.setUser(token);
+      } else {
+        delete axios.defaults.headers.common.Authorization;
+        localStorage.removeItem("token");
+        this.user = null;
+      }
+    }
   };
 }
 
@@ -53,6 +79,8 @@ decorate(AuthStore, {
 });
 
 const authStore = new AuthStore();
+authStore.checkForToken();
+
 // remember that you are creating a variable to export it, as you are not export the
 // class itself but the object that is being export
 

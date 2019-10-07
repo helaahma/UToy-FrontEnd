@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import authStore from "../stores/AuthStore";
+import authStore from "../stores/authStore";
 // import Login from "../stores/AuthStore";
 
 class Login extends Component {
@@ -15,8 +15,7 @@ class Login extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    authStore.loginUser(this.state);
-    this.props.closeModal();
+    authStore.login(this.state, this.props.history);
   };
 
   render() {
