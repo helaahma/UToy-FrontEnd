@@ -17,7 +17,6 @@ const CollectablesRow = props => {
   // );
   return (
     <tr>
-      {/* <Link to={`/detail/${collectables.id}/`}> */}
       <td>{collectables.item}</td>
       <td>{collectables.group}</td>
       <td>{collectables.owner}</td>
@@ -35,7 +34,6 @@ const CollectablesRow = props => {
           src={collectables.image}
           className="img-thumbnail img-fluid"
           alt={collectables.item}
-          roundedCircle
         />
       </td>
       <td>
@@ -43,7 +41,6 @@ const CollectablesRow = props => {
           <button className="btn btn-danger"> More Details </button>
         </Link>
       </td>
-      {/* </Link> */}
     </tr>
   );
 };
