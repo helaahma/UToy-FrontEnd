@@ -34,7 +34,7 @@ class CollectableList extends Component {
       return <Loading />;
     } else {
       return (
-        <div className="books">
+        <div className="collec">
           <h3>collectables</h3>
           <SearchBar store={collectableStore} />
           {allCollectablesButton}

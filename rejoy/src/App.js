@@ -4,7 +4,7 @@ import logo from "./logo.svg";
 import "./App.css";
 //components
 import collectableList from "./components/collectable/index";
-import collectableDetail from "./components/collectable/collectableDetail";
+import collectableDetail from "./components/collectable/CollectableDetail";
 import notFound from "./components/notFound/notFound";
 import Loading from "./components/Loading";
 //Router
@@ -22,8 +22,7 @@ function App() {
         <Switch className="App">
           <Redirect exact from="/" to="/list" />
           <Route path="/list/:collectableCond?/" component={collectableList} />
-          <Route path="/detail/:id" component={collectableDetail} />
-
+          <Route path="/detail/:id/" component={collectableDetail} />
           <Route component={notFound} />
         </Switch>
       );

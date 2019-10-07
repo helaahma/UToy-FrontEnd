@@ -2,8 +2,6 @@ import React from "react";
 import { observer } from "mobx-react";
 
 //components
-import CollectableTable from "./CollectablleTable";
-//Add Collectable
 //stores
 import collectableStore from "../../stores/collectableStore";
 // import AddCollectableModal from "./AddCollectableModal";
@@ -15,7 +13,7 @@ const CollectableDetail = props => {
   console.log("PROPS>MATCH.PARAMS>IDDD", collectable);
 
   return (
-    <div className="collectable">
+    <div className="collec">
       <div>
         <h3>{collectable.item}</h3>
         <h3>{collectable.group}</h3>

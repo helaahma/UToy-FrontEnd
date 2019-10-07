@@ -16,27 +16,33 @@ const CollectablesRow = props => {
   // );
   return (
     <tr>
-      <Link to={`/detail/${collectables.id}/`}>
-        <td>{collectables.item}</td>
-        <td>{collectables.group}</td>
-        <td>{collectables.desired_price}</td>
-        <td>{collectables.owner}</td>
-        <td>
-          <Link to={`/collectable/list/${collectables.condition}`}>
-            <button className="btn" style={{ backgroundColor: "#FFE4C4" }}>
-              {" "}
-              {collectables.condition}
-            </button>
-          </Link>
-        </td>
-        <td>
-          <img
-            src={collectables.image}
-            className="img-thumbnail img-fluid"
-            alt={collectables.item}
-          />
-        </td>
-      </Link>
+      {/* <Link to={`/detail/${collectables.id}/`}> */}
+      <td>{collectables.item}</td>
+      <td>{collectables.group}</td>
+      <td>{collectables.owner}</td>
+      <td>{collectables.desired_price}</td>
+      <td>
+        <Link to={`/list/${collectables.condition}`}>
+          <button className="btn" style={{ backgroundColor: "#FFE4C4" }}>
+            {" "}
+            {collectables.condition}
+          </button>
+        </Link>
+      </td>
+      <td>
+        <img
+          src={collectables.image}
+          className="img-thumbnail img-fluid"
+          alt={collectables.item}
+          roundedCircle
+        />
+      </td>
+      <td>
+        <Link to={`/detail/${collectables.id}/`}>
+          <button className="btn btn-danger"> More Details </button>
+        </Link>
+      </td>
+      {/* </Link> */}
     </tr>
   );
 };
