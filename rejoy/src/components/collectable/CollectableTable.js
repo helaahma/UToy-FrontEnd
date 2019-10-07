@@ -13,12 +13,13 @@ const collectableTable = props => {
     <table className="mt-3 table">
       <thead>
         <tr>
-          <th />
           <th>item</th>
           <th>group</th>
-          <th>target price</th>
+          <th>Owner</th>
+          <th>desired price</th>
           <th>condition</th>
           <th> image</th>
+          <th> </th>
         </tr>
       </thead>
       <tbody>{collectableRows}</tbody>
