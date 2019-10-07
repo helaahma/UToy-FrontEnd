@@ -5,7 +5,9 @@ import { observer } from "mobx-react";
 //stores
 import collectableStore from "../../stores/collectableStore";
 //components
+
 import CollectiblleTable from "./CollectablleTable";
+
 import Loading from "../Loading";
 import SearchBar from "../SearchBar";
 
@@ -38,7 +40,7 @@ class CollectableList extends Component {
           <h3>collectables</h3>
           <SearchBar store={collectableStore} />
           {allCollectablesButton}
-          <CollectiblleTable collectables={collectables} />
+          <CollectibleTable collectables={collectables} />
         </div>
       );
     }

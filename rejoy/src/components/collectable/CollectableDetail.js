@@ -2,13 +2,16 @@ import React from "react";
 import { observer } from "mobx-react";
 
 //components
-import CollectableTable from "./CollectablleTable";
+
+import CollectableTable from "./CollectableTable";
+
 //Add Collectable
 //stores
 import collectableStore from "../../stores/collectableStore";
 // import AddCollectableModal from "./AddCollectableModal";
 
 const CollectableDetail = props => {
+
   const collectableId = props.match.params.id;
   console.log("PROPS>MATCH.PARAMS>ID", collectableId);
   const collectable = collectableStore.getCollectables(collectableId);
@@ -29,6 +32,7 @@ const CollectableDetail = props => {
         <h2>{collectable.special_features}</h2>
         <h2>{collectable.condition}</h2>
       </div>
+
 
       {/* {Collectable.owner && <AddCollectableModal Collectable={Collectable} />} */}
     </div>

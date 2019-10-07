@@ -4,7 +4,9 @@ import { observer } from "mobx-react";
 
 const CollectablesRow = props => {
   const collectables = props.collectable;
+
   console.log("[CollectablesRows.js], collectables: ", collectables.id);
+
 
   // const availableButton = (
   //   <button
@@ -16,6 +18,7 @@ const CollectablesRow = props => {
   // );
   return (
     <tr>
+
       <Link to={`/detail/${collectables.id}/`}>
         <td>{collectables.item}</td>
         <td>{collectables.group}</td>
@@ -37,6 +40,7 @@ const CollectablesRow = props => {
           />
         </td>
       </Link>
+
     </tr>
   );
 };
