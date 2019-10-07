@@ -3,9 +3,13 @@ import { observer } from "mobx-react";
 import logo from "./logo.svg";
 import "./App.css";
 //components
-import collectableList from "./components/collectable/index";
-import collectableDetail from "./components/collectable/CollectableDetail";
+import collectableList from "./components/collectable";
+import collectableDetail from "./components/collectable/collectableDetail";
+import SellRequest from "./forms/SellRequest";
+import Login from "./forms/LoginForm";
+import registration from "./forms/Registration";
 import notFound from "./components/notFound/notFound";
+
 import Loading from "./components/Loading";
 //Router
 import { Route, Switch, Redirect, withRouter } from "react-router-dom";
@@ -22,7 +26,11 @@ function App() {
         <Switch className="App">
           <Redirect exact from="/" to="/list" />
           <Route path="/list/:collectableCond?/" component={collectableList} />
-          <Route path="/detail/:id/" component={collectableDetail} />
+          <Route path="/detail/:id" component={collectableDetail} />
+          <Route path="/login/" component={Login} />
+          <Route path="/register/" component={registration} />
+          <Route path="/sellrequest/" component={SellRequest} />
+
           <Route component={notFound} />
         </Switch>
       );

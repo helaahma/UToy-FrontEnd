@@ -13,6 +13,7 @@ class CollectableStore {
       console.log("[collectablesStore.js], collectables: ", collectables);
       this.collectables = collectables;
       this.loading = false;
+      console.log("STORE", this.collectables);
     } catch (error) {
       console.log(error);
     }
@@ -35,9 +36,9 @@ class CollectableStore {
   // //   this.setState({ [event.target.name]: event.target.value });
   // };
 
-  portForm = async form => {
+  postForm = async form => {
     try {
-      const res = await instance.post("SellRequest/", form);
+      const res = await instance.post("sellrequest/", form);
       this.collectables.push(res.data);
     } catch (err) {
       this.statusMessage = err;
