@@ -5,7 +5,9 @@ import { observer } from "mobx-react";
 //stores
 import collectableStore from "../../stores/collectableStore";
 //components
-import CollectibleTable from "./CollectableTable";
+
+import CollectiblleTable from "./CollectablleTable";
+
 import Loading from "../Loading";
 import SearchBar from "../SearchBar";
 
@@ -25,7 +27,7 @@ class CollectableList extends Component {
     } else {
       collectables = collectableStore.getCollectableByCond(collectableCond);
       allCollectablesButton = (
-        <Link to="/collectable/list/">
+        <Link to="/list">
           <button className="btn">Collectables List</button>
         </Link>
       );
