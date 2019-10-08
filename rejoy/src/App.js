@@ -4,7 +4,7 @@ import logo from "./logo.svg";
 import "./App.css";
 //components
 import collectableList from "./components/collectable";
-import collectableDetail from "./components/collectable/collectableDetail";
+import collectableDetail from "./components/collectable/CollectableDetail";
 import SellRequest from "./forms/SellRequest";
 import Login from "./forms/LoginForm";
 import registration from "./forms/Registration";
