@@ -32,15 +32,13 @@ class CollectableStore {
     return this.filteredCollectables.filter(coll => coll.condition === cond);
   };
 
-  // handleChange = event => {
-  // //   this.setState({ [event.target.name]: event.target.value });
-  // };
-
   postForm = async form => {
     try {
       const res = await instance.post("sellrequest/", form);
-      this.collectables.push(res.data);
+      const resData = res.data;
+      this.collectables.push(resData);
     } catch (err) {
+      console.error(err.response.data);
       this.statusMessage = err;
     }
   };

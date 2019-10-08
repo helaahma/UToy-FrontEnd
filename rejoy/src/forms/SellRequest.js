@@ -9,8 +9,6 @@ class SellRequest extends Component {
     item: "",
     group: "",
     description: "",
-    image: "",
-    conditions: "",
     condition: "",
     special_features: "",
     owner: "",
@@ -24,10 +22,15 @@ class SellRequest extends Component {
   handleSubmit = event => {
     event.preventDefault();
     collectableStore.postForm(this.state);
+    return <Redirect to="/" />;
   };
 
   render() {
-    if (authStore.user) {
+    console.log("user", authStore.user);
+
+    if (!authStore.user) return <Redirect to="/login/" />;
+
+    {
       return (
         <form onSubmit={this.handleSubmit}>
           <div className="input-group mb-3">
@@ -62,32 +65,8 @@ class SellRequest extends Component {
                 />
               </div>
             </div>
-            <div className="input-group mb-3">
-              <div className="form-group">
-                <label>image</label>
-                <input
-                  type="file"
-                  className="form-control"
-                  name="image"
-                  onChange={event => this.handleChange(event)}
-                />
-              </div>
-            </div>
 
             <div className="input-group mb-3">
-              <div className="form-group">
-                <label>conditions</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  name="conditions"
-                  onChange={event => this.handleChange(event)}
-                />
-              </div>
-            </div>
-
-            <div className="input-group mb-3">
-              {/* NEED TO CHECK FIELD */}
               <div className="form-group">
                 <label>condition</label>
                 <input
@@ -114,13 +93,21 @@ class SellRequest extends Component {
             <div className="input-group mb-3">
               <div className="form-group">
                 <label>Owner</label>
-                {authStore.user.username}
-                {/* <input
-                  type="text"
+                {authStore.user.user_id}
+              </div>
+            </div>
+
+            <div className="input-group mb-3">
+              <div className="form-group">
+                <label> Desired Price</label>
+                <input
+                  type="number"
                   className="form-control"
-                  name="owner"
+                  name="desired_price"
+                  pattern="[0-9]*"
+                  inputMode="numeric"
                   onChange={event => this.handleChange(event)}
-                /> */}
+                />
               </div>
             </div>
 
@@ -134,9 +121,8 @@ class SellRequest extends Component {
           </div>
         </form>
       );
-    } else {
-      return <Redirect to="/login/" />;
     }
   }
 }
+
 export default observer(SellRequest);

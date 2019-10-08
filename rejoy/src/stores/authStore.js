@@ -19,11 +19,11 @@ class AuthStore {
     if (token) {
       const decodedUser = jwt_decode(token);
       this.user = decodedUser;
-      axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+      instance.defaults.headers.common.Authorization = `Bearer ${token}`;
       localStorage.setItem("token", token);
-      console.log("user", this.user);
+      console.log("user", token);
     } else {
-      delete axios.defaults.headers.common.Authorization;
+      delete instance.defaults.headers.common.Authorization;
       this.user = null;
       localStorage.removeItem("token");
     }
@@ -56,15 +56,14 @@ class AuthStore {
 
   checkForToken = () => {
     const token = localStorage.getItem("token");
+    console.log("TOOKEEEN", token);
     if (token) {
       const currentTime = Date.now() / 1000;
       const user = jwt_decode(token);
       if (user.exp >= currentTime) {
         this.setUser(token);
       } else {
-        delete axios.defaults.headers.common.Authorization;
-        localStorage.removeItem("token");
-        this.user = null;
+        this.setUser();
       }
     }
   };
