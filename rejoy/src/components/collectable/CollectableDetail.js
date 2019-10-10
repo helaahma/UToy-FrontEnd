@@ -2,7 +2,7 @@ import React from "react";
 import { observer } from "mobx-react";
 
 //components
-
+import BidPrice from "./bid";
 //stores
 import collectableStore from "../../stores/collectableStore";
 // import AddCollectableModal from "./AddCollectableModal";
@@ -25,6 +25,7 @@ const CollectableDetail = props => {
         <h2>{collectable.desired_price}</h2>
         <h2>{collectable.special_features}</h2>
         <h2>{collectable.condition}</h2>
+        <BidPrice collectable={collectable} />
       </div>
 
       {/* {Collectable.owner && <AddCollectableModal Collectable={Collectable} />} */}
