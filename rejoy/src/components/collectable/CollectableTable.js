@@ -7,7 +7,6 @@ const collectableTable = props => {
   const collectableRows = props.collectables.map(collectable => (
     <CollectablesRow key={collectable.id} collectable={collectable} />
   ));
-  console.log(props.collectables);
 
   return (
     <table className="mt-3 table">

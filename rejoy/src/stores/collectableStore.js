@@ -10,10 +10,8 @@ class CollectableStore {
     try {
       const res = await instance.get("collectable/list/");
       const collectables = res.data;
-      console.log("[collectablesStore.js], collectables: ", collectables);
       this.collectables = collectables;
       this.loading = false;
-      console.log("STORE", this.collectables);
     } catch (error) {
       console.log(error);
     }
@@ -32,11 +30,16 @@ class CollectableStore {
     return this.filteredCollectables.filter(coll => coll.condition === cond);
   };
 
-  postForm = async form => {
+  postForm = async (form, history) => {
     try {
-      const res = await instance.post("sellrequest/", form);
+      const res = await instance.post("sellrequest/", form, {
+        headers: {
+          "content-type": "multipart/form-data"
+        }
+      });
       const resData = res.data;
       this.collectables.push(resData);
+      history.replace("/");
     } catch (err) {
       console.error(err.response.data);
       this.statusMessage = err;

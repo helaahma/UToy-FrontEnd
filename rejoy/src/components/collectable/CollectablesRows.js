@@ -5,8 +5,6 @@ import { observer } from "mobx-react";
 const CollectablesRow = props => {
   const collectables = props.collectable;
 
-  console.log("[CollectablesRows.js], collectables: ", collectables.id);
-
   // const availableButton = (
   //   <button
   //     className={`btn btn-${book.available ? "success" : "danger"}`}
