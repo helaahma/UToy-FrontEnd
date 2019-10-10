@@ -17,7 +17,6 @@ class CollectableList extends Component {
   };
   render() {
     const collectableCond = this.props.match.params.collectableCond;
-    console.log("[Collectable, index.js] collectablesId: ", collectableCond);
     let collectables;
     let allCollectablesButton;
     if (!collectableCond) {

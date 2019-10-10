@@ -9,9 +9,7 @@ import collectableStore from "../../stores/collectableStore";
 
 const CollectableDetail = props => {
   const collectableId = props.match.params.id;
-  console.log("PROPS>MATCH.PARAMS>ID", collectableId);
   const collectable = collectableStore.getCollectables(collectableId);
-  console.log("PROPS>MATCH.PARAMS>IDDD", collectable);
 
   return (
     <div className="collec">

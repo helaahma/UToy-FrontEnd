@@ -21,7 +21,6 @@ class AuthStore {
       this.user = decodedUser;
       instance.defaults.headers.common.Authorization = `Bearer ${token}`;
       localStorage.setItem("token", token);
-      console.log("user", token);
     } else {
       delete instance.defaults.headers.common.Authorization;
       this.user = null;
@@ -32,7 +31,6 @@ class AuthStore {
   signupUser = async userData => {
     try {
       await instance.post("register/", userData);
-      console.log("reg");
       this.login(userData);
     } catch (err) {
       console.error(err.response.data);
@@ -56,7 +54,6 @@ class AuthStore {
 
   checkForToken = () => {
     const token = localStorage.getItem("token");
-    console.log("TOOKEEEN", token);
     if (token) {
       const currentTime = Date.now() / 1000;
       const user = jwt_decode(token);
