@@ -4,32 +4,29 @@ import { instance } from "./authStore";
 class BidStore {
   bids = [];
   highestBid = null;
-  newBid = null;
   loading = true;
+  statusMessage = null;
 
-  fetchHighestBid = async BidId => {
-    console.log("BIIIIID", BidId);
+  fetchBid = async bidID => {
     try {
-      const res = await instance.get(`bid/${BidId}/`);
+      const res = await instance.get(`bid/detail/${bidID}`);
       const bid = res.data;
       console.log("[bidStore.js], bid: ", bid);
-      this.highestBid = bid;
+      this.bids = bid;
       this.loading = false;
     } catch (error) {
       console.log(error);
     }
   };
 
-  createBid = async (collectable, price) => {
-    console.log("BID", collectable);
+  createBid = async (collectableID, price) => {
+    console.log("BID", collectableID);
     try {
-      const res = await instance.post(`bid/${collectable}/`, price);
-      const resData = res.data;
-      this.price = resData;
-      this.loading = false;
+      await instance.post(`bid/${collectableID}/`, price);
+      this.highestBid = price;
     } catch (err) {
-      console.error(err.response.data);
-      this.statusMessage = err;
+      console.error(err.response.data.highest_bid);
+      this.statusMessage = err.response.data.highest_bid;
     }
   };
   getBidById = id => {
@@ -39,7 +36,8 @@ class BidStore {
 decorate(BidStore, {
   bids: observable,
   loading: observable,
-  price: observable
+  highestBid: observable,
+  statusMessage: observable
 });
 const bidStore = new BidStore();
 export default bidStore;
