@@ -14,8 +14,11 @@ class CollectableDetail extends Component {
   async componentDidMount() {
     const collectableId = this.props.match.params.id;
     await collectableStore.fetchCollectable(collectableId);
-    const bidID = collectableStore.collectable.bid_order[0].id;
-    bidStore.fetchBid(bidID);
+    console.log(collectableStore.collectable);
+    const bidID = collectableStore.collectable.bid_order;
+    if (bidID) {
+      bidStore.fetchBid(bidID[0].id);
+    }
   }
 
   render() {
