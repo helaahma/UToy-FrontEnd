@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { observer } from "mobx-react";
-
+import { Redirect } from "react-router-dom";
 //components
 import authStore from "../../stores/authStore";
 //stores
@@ -11,13 +11,22 @@ import profileStore from "../../stores/profileStore";
 
 class UserProfile extends Component {
   state = {
-    editing: false
+    editing: false,
+    address: profileStore.userProfile.address
   };
   componentDidMount() {
     if (authStore.user) {
       profileStore.fetchUserProfile();
     }
   }
+  handleChange = event => {
+    this.setState({ [event.target.name]: event.target.value });
+  };
+
+  handleSubmit = () => {
+    //call profile update function
+    this.setState({ editing: false });
+  };
 
   render() {
     if (!authStore.user) {
@@ -35,17 +44,25 @@ class UserProfile extends Component {
               Name: `${userProfile.user.first_name} $
               {userProfile.user.last_name}`
             </h2>
-            <h3>
-              User Name:{" "}
-              {this.state.editing ? (
-                <input value="1"></input>
-              ) : (
-                userProfile.user.username
-              )}
-            </h3>
+            <h3>User Name: userProfile.user.username</h3>
             <h3>Email Address: {userProfile.user.email}</h3>
             <h3>Date of Inception: {userProfile.date_joined}</h3>
-            <h2>Address: {userProfile.address}</h2>
+            {this.state.editing ? (
+              <input
+                name="address"
+                value={this.state.address}
+                onChange={this.handleChange}
+              ></input>
+            ) : (
+              <h2>Address: {userProfile.address}</h2>
+            )}
+            {this.state.editing ? (
+              <button onClick={this.handleSubmit}>Submit</button>
+            ) : (
+              <button onClick={() => this.setState({ editing: true })}>
+                Update
+              </button>
+            )}
           </div>
         </div>
       );
@@ -53,4 +70,4 @@ class UserProfile extends Component {
   }
 }
 
-export default observe(UserProfile);
+export default observer(UserProfile);
