@@ -29,6 +29,17 @@ class BidStore {
       this.statusMessage = err.response.data.highest_bid;
     }
   };
+
+  approveSell = async collectableID => {
+    console.log("BID", collectableID);
+    try {
+      await instance.get(`approve/sell/${collectableID}/`);
+      this.bids = null;
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   getBidById = id => {
     return this.bids.find(bid => +bid.id === +id);
   };
