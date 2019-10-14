@@ -9,12 +9,6 @@ export const instance = axios.create({
 class AuthStore {
   user = null;
 
-  // setUser = token => {
-  //   axios.defaults.headers.common.Authorization = `JWT ${token}`;
-  //   const decodedUser = jwt_decode(token);
-  //   this.user = decodedUser;
-  // };
-
   setUser = token => {
     if (token) {
       const decodedUser = jwt_decode(token);
@@ -48,8 +42,16 @@ class AuthStore {
     }
   };
 
-  logout = () => {
-    this.setUser();
+  fetchUserProfile = async username => {
+    try {
+      const res = await instance.get(`userprofile/${username}`);
+      const profile = res.data;
+
+      this.userProfile = profile;
+      this.loading = false;
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   checkForToken = () => {
@@ -63,6 +65,10 @@ class AuthStore {
         this.setUser();
       }
     }
+  };
+
+  logout = () => {
+    this.setUser();
   };
 }
 

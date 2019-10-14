@@ -16,6 +16,7 @@ class Login extends Component {
   handleSubmit = event => {
     event.preventDefault();
     authStore.login(this.state, this.props.history);
+    authStore.fetchUserProfile(this.state.username);
   };
 
   render() {
