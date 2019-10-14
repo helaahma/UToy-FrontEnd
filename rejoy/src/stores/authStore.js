@@ -1,6 +1,7 @@
 import { decorate, observable, computed } from "mobx";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
+import profileStore from "./profileStore";
 
 export const instance = axios.create({
   baseURL: "http://127.0.0.1:8000/api/"
@@ -14,6 +15,7 @@ class AuthStore {
       const decodedUser = jwt_decode(token);
       this.user = decodedUser;
       instance.defaults.headers.common.Authorization = `Bearer ${token}`;
+      profileStore.fetchUserProfile();
       localStorage.setItem("token", token);
     } else {
       delete instance.defaults.headers.common.Authorization;

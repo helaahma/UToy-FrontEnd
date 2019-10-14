@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import authStore from "../stores/authStore";
+import profileStore from "../stores/profileStore";
 // import Login from "../stores/AuthStore";
 
 class Login extends Component {
@@ -16,7 +17,7 @@ class Login extends Component {
   handleSubmit = event => {
     event.preventDefault();
     authStore.login(this.state, this.props.history);
-    authStore.fetchUserProfile(this.state.username);
+    profileStore.fetchUserProfile(this.state.username);
   };
 
   render() {

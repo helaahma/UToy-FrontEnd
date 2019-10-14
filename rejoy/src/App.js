@@ -16,6 +16,7 @@ import { Route, Switch, Redirect, withRouter } from "react-router-dom";
 
 //Stores
 import collectableStore from "./stores/collectableStore";
+import profile from "./components/profile";
 
 function App() {
   const getView = () => {
@@ -30,7 +31,7 @@ function App() {
           <Route path="/login/" component={Login} />
           <Route path="/register/" component={registration} />
           <Route path="/sellrequest/" component={SellRequest} />
-
+          <Route path="/profile" component={profile} />
           <Route component={notFound} />
         </Switch>
       );
