@@ -7,6 +7,7 @@ import BidPrice from "./bid";
 import collectableStore from "../../stores/collectableStore";
 import bidStore from "../../stores/bidStore";
 import Loading from "../Loading";
+import ApproveSell from "./ApproveSell";
 // import AddCollectableModal from "./AddCollectableModal";
 
 class CollectableDetail extends Component {
@@ -44,7 +45,11 @@ class CollectableDetail extends Component {
                 ? `${bidStore.statusMessage}`
                 : `  ${HighestBid}`}
             </h2>
-            <BidPrice collectableId={collectable.id} />
+            {collectableStore.collectable.owner.username ? (
+              <ApproveSell collectableId={collectable.id} />
+            ) : (
+              <BidPrice collectableId={collectable.id} />
+            )}
           </div>
 
           {/* {Collectable.owner && <AddCollectableModal Collectable={Collectable} />} */}
