@@ -1,9 +1,8 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import authStore from "../stores/authStore";
 import profileStore from "../stores/profileStore";
-// import Login from "../stores/AuthStore";
-
+import "./style.css";
 class Login extends Component {
   state = {
     username: "",
@@ -17,18 +16,21 @@ class Login extends Component {
   handleSubmit = event => {
     event.preventDefault();
     authStore.login(this.state, this.props.history);
-    profileStore.fetchUserProfile(this.state.username);
   };
 
   render() {
     const { username, password } = this.state;
+    if (authStore.user) return <Redirect to="/" />;
     return (
-      <div className="col-6 mx-auto">
-        <div className="card my-5">
-          <div className="card-body">
+      <div className="container login-container">
+        <div className="row">
+          <div className="col-md-6 login-form-1">
             <form onSubmit={this.handleSubmit}>
               <div className="form-group">
-                <label htmlFor="username">Username</label>
+                <label htmlFor="username">
+                  {" "}
+                  <strong>Username</strong>
+                </label>
                 <input
                   type="text"
                   className="form-control"
@@ -40,7 +42,9 @@ class Login extends Component {
                 />
               </div>
               <div className="form-group">
-                <label htmlFor="password">Password</label>
+                <label htmlFor="password">
+                  <strong>Password</strong>
+                </label>
                 <input
                   type="password"
                   className="form-control"
@@ -51,13 +55,21 @@ class Login extends Component {
                   onChange={this.handleChange}
                 />
               </div>
-
               <button type="submit" className="btn btn-primary">
                 Login
               </button>
-              <Link to="/signup" className="btn btn-link my-2 my-sm-0">
+              <br />
+              <br />
+              <Link to="/signup" className="btn btn-primary my-2 my-sm-0">
                 Signup for an account
               </Link>
+
+              <div className="login-logo">
+                <img
+                  alt="xd"
+                  src={"http://www.pngmart.com/files/6/Rocket-PNG-File.png"}
+                />
+              </div>
             </form>
           </div>
         </div>

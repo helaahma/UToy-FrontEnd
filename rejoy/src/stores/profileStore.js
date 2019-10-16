@@ -12,6 +12,7 @@ class ProfileStore {
       const profile = res.data;
       this.userProfile = profile;
       this.loading = false;
+      console.log("fetched");
     } catch (error) {
       console.log(error);
     }
@@ -33,7 +34,6 @@ decorate(ProfileStore, {
 });
 
 const profileStore = new ProfileStore();
-profileStore.fetchUserProfile();
 
 // remember that you are creating a variable to export it, as you are not export the
 // class itself but the object that is being export

@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { observer } from "mobx-react";
+import "../../assets/css/main.css";
+import Rejoy from "../../assets/Rejoy.png";
+import "../../assets/css/font-awesome.min.css";
 
 //stores
 import collectableStore from "../../stores/collectableStore";
@@ -17,11 +20,9 @@ class CollectableList extends Component {
   };
   render() {
     const collectableCond = this.props.match.params.collectableCond;
-    let collectables;
+    let collectables = collectableStore.filteredCollectables;
     let allCollectablesButton;
-    if (!collectableCond) {
-      collectables = collectableStore.collectables;
-    } else {
+    if (collectableCond) {
       collectables = collectableStore.getCollectableByCond(collectableCond);
       allCollectablesButton = (
         <Link to="/list">
@@ -33,17 +34,36 @@ class CollectableList extends Component {
       return <Loading />;
     } else {
       return (
-        <div className="collec">
-          <h3>collectables</h3>
-          <SearchBar store={collectableStore} />
+        <>
+          <section id="one" className="wrapper style2">
+            <div className="inner">
+              <div className="grid-style"></div>
+              <div>
+                <div className="box">
+                  <div className="image fit">
+                    <img
+                      src={Rejoy}
+                      alt=""
+                      style={{ height: "400px", width: "400px" }}
+                    />
+                  </div>
+                  <div className="content">
+                    <header className="align-center">
+                      <p>Collectables</p>
+                      <SearchBar store={collectableStore} />
+                    </header>
+
+                    <footer className="align-center"></footer>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
           {allCollectablesButton}
           <CollectableTable collectables={collectables} />
-        </div>
+        </>
       );
     }
-    // let card = collectableStore.filteredcollectables.map(collectable => {
-    //   return <Card key={collectable.id} collectable={collectable} />;
-    // });
   }
 }
 export default observer(CollectableList);

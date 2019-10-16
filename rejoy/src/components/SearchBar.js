@@ -1,9 +1,9 @@
 import React from "react";
+import { observer } from "mobx-react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
-const SearchBar = props => {
-  const store = props.store;
+const SearchBar = ({ store }) => {
   return (
     <div className="form-group col-lg-6 col-12 mx-auto">
       <div className="input-group my-3">
@@ -22,4 +22,4 @@ const SearchBar = props => {
   );
 };
 
-export default SearchBar;
+export default observer(SearchBar);

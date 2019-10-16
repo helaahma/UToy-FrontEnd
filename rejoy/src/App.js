@@ -17,6 +17,8 @@ import { Route, Switch, Redirect, withRouter } from "react-router-dom";
 //Stores
 import collectableStore from "./stores/collectableStore";
 import profile from "./components/profile";
+import SideBar from "./components/SideBar";
+import Logout from "./components/Logout";
 
 function App() {
   const getView = () => {
@@ -30,8 +32,9 @@ function App() {
           <Route path="/detail/:id" component={collectableDetail} />
           <Route path="/login/" component={Login} />
           <Route path="/register/" component={registration} />
+          <Route path="/logout/" component={Logout} />
           <Route path="/sellrequest/" component={SellRequest} />
-          <Route path="/profile" component={profile} />
+          <Route path="/profile/" component={profile} />
           <Route component={notFound} />
         </Switch>
       );
@@ -40,9 +43,9 @@ function App() {
   return (
     <div id="app" className="container-fluid">
       <div className="row">
-        {/* <div className="col-2">
-          <Sidebar />
-        </div> */}
+        <div className="col-2">
+          <SideBar />
+        </div>
         <div className="content col-10">{getView()}</div>
       </div>
     </div>

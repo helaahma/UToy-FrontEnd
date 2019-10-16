@@ -12,17 +12,30 @@ class AuthStore {
 
   setUser = token => {
     if (token) {
-      const decodedUser = jwt_decode(token);
-      this.user = decodedUser;
+      this.user = jwt_decode(token);
       instance.defaults.headers.common.Authorization = `Bearer ${token}`;
-      profileStore.fetchUserProfile();
       localStorage.setItem("token", token);
+      profileStore.fetchUserProfile();
     } else {
       delete instance.defaults.headers.common.Authorization;
       this.user = null;
       localStorage.removeItem("token");
     }
   };
+
+  // setUserToken = token => {
+  //   if (token) {
+  //     this.user1 = jwt_decode(token);
+  //     console.log("gello", this.user1);
+  //     instance.defaults.headers.common.Authorization = `Bearer ${token}`;
+  //     localStorage.setItem("token", token);
+  //     console.log("yeee");
+  //   } else {
+  //     delete instance.defaults.headers.common.Authorization;
+  //     this.user1 = null;
+  //     localStorage.removeItem("token");
+  //   }
+  // };
 
   signupUser = async userData => {
     try {
@@ -37,24 +50,26 @@ class AuthStore {
     try {
       const res = await instance.post("login/", userData);
       const data = res.data;
+      console.log("data access", data.access);
+      // this.setUserToken(data.access);
       this.setUser(data.access);
-      history.replace("/");
+      history.goBack();
     } catch (err) {
-      console.error(err);
+      console.log(err);
     }
   };
 
-  fetchUserProfile = async username => {
-    try {
-      const res = await instance.get(`userprofile/${username}`);
-      const profile = res.data;
+  // fetchUserProfile = async () => {
+  //   try {
+  //     const res = await instance.get(`userprofile/`);
+  //     const profile = res.data;
 
-      this.userProfile = profile;
-      this.loading = false;
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  //     this.userProfile = profile;
+  //     this.loading = false;
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   checkForToken = () => {
     const token = localStorage.getItem("token");
@@ -75,10 +90,6 @@ class AuthStore {
 }
 
 decorate(AuthStore, {
-  // username: observable,
-  // email: observable,
-  // // password: observable,
-  // The above is already being accessed/retrieved from the user
   user: observable
 });
 
