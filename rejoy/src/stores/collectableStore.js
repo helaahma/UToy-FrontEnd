@@ -30,9 +30,12 @@ class CollectableStore {
     }
   };
   get filteredCollectables() {
-    return this.collectables.filter(collectable => {
+    console.log("QUERY", this.query);
+    const coll = this.collectables.filter(collectable => {
       return collectable.item.toLowerCase().includes(this.query.toLowerCase());
     });
+    console.log("COLLLL", coll);
+    return coll;
   }
 
   getCollectables = id => {

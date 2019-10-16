@@ -23,8 +23,8 @@ class UserProfile extends Component {
     this.setState({ [event.target.name]: event.target.value });
   };
 
-  handleSubmit = () => {
-    //call profile update function
+  handleSubmit = useData => {
+    profileStore.UpdateUserProfile(useData);
     this.setState({ editing: false });
   };
 
@@ -41,8 +41,8 @@ class UserProfile extends Component {
         <div className="collec">
           <div>
             <h2>
-              Name: `${userProfile.user.first_name} $
-              {userProfile.user.last_name}`
+              Name:{" "}
+              {`${userProfile.user.first_name} ${userProfile.user.last_name}`}
             </h2>
             <h3>User Name: userProfile.user.username</h3>
             <h3>Email Address: {userProfile.user.email}</h3>

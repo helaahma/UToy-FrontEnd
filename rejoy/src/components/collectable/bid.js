@@ -3,8 +3,9 @@ import { observer } from "mobx-react";
 
 //Stores
 import bidStore from "../../stores/bidStore";
+import authStore from "../../stores/authStore";
 
-const BidPrice = ({ collectableId }) => {
+const BidPrice = ({ collectableId, history }) => {
   //   const BidId = props.match.params.id;
   //   const bid = bidStore.getBidById(BidId);
 
@@ -12,19 +13,20 @@ const BidPrice = ({ collectableId }) => {
 
   const handleSubmit = async event => {
     event.preventDefault();
-    await bidStore.createBid(collectableId, { price: counter });
-    console.log("[bid.js] statusMessage:", bidStore.statusMessage);
+    if (authStore.user)
+      await bidStore.createBid(collectableId, { price: counter });
+    else history.push("/login");
   };
   return (
     <form onSubmit={handleSubmit}>
       <div className="input-group is-invalid col-md-6">
         <input
           type="number"
-          className="form-control is-invalid"
+          className="form-control"
           id="validationServer05"
           value={counter}
-          min={bidStore.highestBid}
-          step="5"
+          min={bidStore.highestBid + 5}
+          step="1"
           onChange={e => setCounter(e.target.value)}
           required
         />

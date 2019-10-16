@@ -2,27 +2,22 @@ import React from "react";
 
 //components
 import CollectablesRow from "./CollectablesRows";
+import collectableStore from "../../stores/collectableStore";
+import "../../assets/css/font-awesome.min.css";
 
-const collectableTable = props => {
-  const collectableRows = props.collectables.map(collectable => (
-    <CollectablesRow key={collectable.id} collectable={collectable} />
-  ));
+const collectableTable = () => {
+  const collectableRows = collectableStore.filteredCollectables.map(
+    collectable => (
+      <CollectablesRow key={collectable.id} collectable={collectable} />
+    )
+  );
 
   return (
-    <table className="mt-3 table">
-      <thead>
-        <tr>
-          <th>item</th>
-          <th>group</th>
-          <th>Owner</th>
-          <th>desired price</th>
-          <th>condition</th>
-          <th> image</th>
-          <th> </th>
-        </tr>
-      </thead>
-      <tbody>{collectableRows}</tbody>
-    </table>
+    <section id="one" class="wrapper style2">
+      <div class="inner">
+        <div class="grid-style">{collectableRows}</div>
+      </div>
+    </section>
   );
 };
 export default collectableTable;

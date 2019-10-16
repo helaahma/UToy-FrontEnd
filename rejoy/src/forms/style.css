@@ -1,0 +1,54 @@
+.login-container {
+  margin-top: 5% !important;
+  margin-bottom: 5% !important;
+}
+.login-logo {
+  position: relative !important;
+  margin-left: -41.5% !important;
+}
+.login-logo img {
+  position: absolute !important;
+  width: 20% !important;
+  margin-top: 19% !important;
+  background: #f05837 !important;
+  border-radius: 4.5rem !important;
+  padding: 5% !important;
+}
+.login-form-1 {
+  padding: 9% !important;
+  background: #999088 !important;
+  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19) !important;
+}
+.login-form-1 h3 {
+  text-align: center !important;
+  margin-bottom: 12% !important;
+  color: #fff !important;
+}
+.login-form-2 {
+  padding: 9% !important;
+  background: #f05837 !important;
+  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19) !important;
+}
+.login-form-2 h3 {
+  text-align: center !important;
+  margin-bottom: 12% !important;
+  color: #fff !important;
+}
+.btnSubmit {
+  font-weight: 600 !important;
+  width: 50% !important;
+  color: #282726 !important;
+  background-color: #fff !important;
+  border: none !important;
+  border-radius: 1.5rem !important;
+  padding: 2% !important;
+}
+.btnForgetPwd {
+  color: #fff !important;
+  font-weight: 600 !important;
+  text-decoration: none !important;
+}
+.btnForgetPwd:hover {
+  text-decoration: none !important;
+  color: #fff !important;
+}

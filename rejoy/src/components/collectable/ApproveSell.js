@@ -7,7 +7,6 @@ const ApproveSell = ({ collectableId }) => {
   const handleSubmit = async event => {
     event.preventDefault();
     await bidStore.approveSell(collectableId);
-    // console.log("[bid.js] statusMessage:", bidStore.statusMessage);
   };
   return (
     <form onSubmit={handleSubmit}>
