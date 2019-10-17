@@ -154,16 +154,15 @@ const Sidebar = () => {
                 <p style={{ textAlign: "center" }}></p>
               </div>
               <br />
-              <h4 className="menu-item active">
-                <NavLink to="/">Collectable</NavLink>
-              </h4>
-              <br />
-              <br />
               {authStore.user && (
                 <h4 className="menu-item">
                   <NavLink to="/profile/">Profile</NavLink>
                 </h4>
               )}
+              <h4 className="menu-item active">
+                <NavLink to="/">Collectable</NavLink>
+              </h4>
+
               <br />
               <br />
               {/* UX */}

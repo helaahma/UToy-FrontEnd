@@ -9,29 +9,63 @@ const CollectablesRow = ({ collectable }) => {
         <div className="image fit">
           <img src={collectable.image} alt={collectable.item} />
         </div>
+
         <div className="content">
-          <header className="align-center">
-            <strong>{collectable.item}</strong>
-          </header>
-          <strong>{collectable.desired_price}</strong>
-          <strong>{collectable.group}</strong>
-          <footer className="align-center">
-            <Link to={`/list/${collectable.condition}`}>
-              <button className="btn" style={{ backgroundColor: "#FFE4C4" }}>
-                <strong>{collectable.condition}</strong>
-              </button>
-            </Link>
-            <br />
-            <br />
-            <Link to={`/detail/${collectable.id}/`}>
-              <button
-                className="btn"
-                style={{ backgroundColor: "#FFE4C4", color: "white" }}
-              >
-                <strong>More Details </strong>
-              </button>
-            </Link>
-          </footer>
+          <div>
+            <h3 className="text-align-center">
+              <strong>
+                <tr>
+                  Name:{"  "}
+                  <span className="badge badge-secondary">
+                    {collectable.item}
+                  </span>
+                </tr>
+              </strong>
+            </h3>
+            <h3 className="text-align-center">
+              <strong>
+                <tr>
+                  Desired price: {"  "}
+                  <span className="badge badge-primary">
+                    {collectable.desired_price}
+                  </span>
+                  {"  "}
+                  KWD
+                </tr>
+              </strong>
+            </h3>
+            <h3 className="text-align-center">
+              <strong>
+                <tr>
+                  Group:{"  "} {collectable.group}
+                </tr>
+              </strong>
+            </h3>
+            <h3>
+              <strong>
+                <tr>
+                  condition:{"  "}
+                  <Link to={`/list/${collectable.condition}`}>
+                    <span className="badge badge-primary">
+                      {collectable.condition}
+                    </span>
+                  </Link>
+                </tr>
+              </strong>
+            </h3>
+            <footer className="align-center">
+              <br />
+              <br />
+              <Link to={`/detail/${collectable.id}/`}>
+                <button
+                  className="btn"
+                  style={{ backgroundColor: "#FFE4C4", fontcolor: "white" }}
+                >
+                  <strong>More Details </strong>
+                </button>
+              </Link>
+            </footer>
+          </div>
         </div>
       </div>
     </div>

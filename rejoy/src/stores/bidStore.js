@@ -3,7 +3,7 @@ import { instance } from "./authStore";
 
 class BidStore {
   bids = [];
-  highestBid = null;
+  highestBid = "";
   loading = true;
   statusMessage = null;
 
