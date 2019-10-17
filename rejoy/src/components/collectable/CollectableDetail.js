@@ -45,22 +45,37 @@ class CollectableDetail extends Component {
       let HighestBid = bidStore.highestBid;
       console.log(collectable.owner.username, "collect");
       return (
-        <div className="box">
-          <div className="image fit">
+        <div className="box col">
+          <div className="actions align-center">
             <img src={collectable.image} alt={collectable.item} />
           </div>
           <div className="content">
             <header className="align-center">
               <h3>Collectable: {collectable.item}</h3>
 
-              <p>Group: {collectable.group}</p>
+              <p>
+                {" "}
+                <span className="badge badge-secondary">
+                  Group: {collectable.group}
+                </span>
+              </p>
             </header>
             <hr />
-            <p>Discription: {collectable.description} </p>
-            <p>Desired price: {collectable.desired_price}</p>
-            <p>Special features: {collectable.special_features}</p>
-            <p> Condition: {collectable.condition} </p>
-            <p>
+            <p className="actions align-center">
+              Discription: {collectable.description}{" "}
+            </p>
+            <p className="actions align-center">
+              Desired price: {collectable.desired_price}
+            </p>
+            <p className="actions align-center">
+              {" "}
+              Special features: {collectable.special_features}
+            </p>
+            <p className="actions align-center">
+              {" "}
+              Condition: {collectable.condition}{" "}
+            </p>
+            <p className="actions align-center">
               Highest bid:
               {bidStore.statusMessage
                 ? `${bidStore.statusMessage}`

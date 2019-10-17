@@ -19,6 +19,7 @@ import collectableStore from "./stores/collectableStore";
 import profile from "./components/profile";
 import SideBar from "./components/SideBar";
 import Logout from "./components/Logout";
+import "./components/collectable/style.css";
 
 function App() {
   const getView = () => {

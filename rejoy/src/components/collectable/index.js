@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { observer } from "mobx-react";
-import "../../assets/css/main.css";
+
 import Rejoy from "../../assets/Rejoy.png";
 import "../../assets/css/font-awesome.min.css";
 
@@ -20,9 +20,11 @@ class CollectableList extends Component {
   };
   render() {
     const collectableCond = this.props.match.params.collectableCond;
-    let collectables = collectableStore.filteredCollectables;
+    let collectables;
     let allCollectablesButton;
-    if (collectableCond) {
+    if (!collectableCond) {
+      collectables = collectableStore.filteredCollectables;
+    } else {
       collectables = collectableStore.getCollectableByCond(collectableCond);
       allCollectablesButton = (
         <Link to="/list">
@@ -35,7 +37,7 @@ class CollectableList extends Component {
     } else {
       return (
         <>
-          <section id="one" className="wrapper style2">
+          <section id="one" className="wrapper style2 ">
             <div className="inner">
               <div className="grid-style"></div>
               <div>

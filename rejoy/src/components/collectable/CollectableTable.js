@@ -13,9 +13,9 @@ const collectableTable = () => {
   );
 
   return (
-    <section id="one" class="wrapper style2">
-      <div class="inner">
-        <div class="grid-style">{collectableRows}</div>
+    <section className="wrapper style2">
+      <div className="inner">
+        <div className="grid-style col">{collectableRows}</div>
       </div>
     </section>
   );
